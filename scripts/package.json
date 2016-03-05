@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^4.4.6",
+    "mysql": "^2.5.4",
     "q": "^1.4.1",
     "request": "^2.69.0"
   }

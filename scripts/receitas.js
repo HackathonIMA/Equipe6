@@ -1,8 +1,15 @@
 var request = require('request');
 var Q = require('q');
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/bancodedados_a');
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : '127.0.0.1',
+  user     : 'root',
+  password : 'root',
+  database : 'hackaton'
+});
+
+connection.connect();
 
 /*
  {
@@ -30,62 +37,60 @@ mongoose.connect('mongodb://localhost/bancodedados_a');
   },
 */
 
-var Receitas = mongoose.model('receitas', {
-    id: {
-        type: 'String',
-        index: { unique: true }
-    }, 
-    anoMesEmissao: { type: 'number'},
-    codigoOrigemRecurso: 0,
-    valorPrevisao: { type: 'number'},
-    valorPrevisaoInicial: { type: 'number'},
-    valorPrevisaoAdicional: { type: 'number'},
-    valorPrevisaoDeducao: { type: 'number'},
-    valorPrevisaoAnulacao: { type: 'number'},
-    valorRealizado: { type: 'number'},
-    valorDeduzido: { type: 'number'},
-    valorARealizar: { type: 'number'},
-    valorARealizarDeduzido: { type: 'number'},
-    valorPrevisaoAcrescimo: { type: 'number'},
-    valorPrevisaoInicialAcrescimo: { type: 'number'},
-    valorPrevisaoDeducaoAcrescimo: { type: 'number'},
-    valorPrevisaoAnulacaoAcrescimo: { type: 'number'},
-    valorRealizadoAcrescimo: { type: 'number'},
-    valorRealizadoDeduzidoAcrescimo: { type: 'number'},
-    valorARealizarAcrescimo: { type: 'number'},
-    valorARealizarDeduzidoAcrescimo: { type: 'number'},
-    naturezaReceita: { type: 'string'}
-});
+//var Receitas = mongoose.model('receitas', {
+//    id: {
+//        type: 'String',
+//        index: { unique: true }
+//    }, 
+//    anoMesEmissao: { type: 'number'},
+//    codigoOrigemRecurso: 0,
+//    valorPrevisao: { type: 'number'},
+//    valorPrevisaoInicial: { type: 'number'},
+//    valorPrevisaoAdicional: { type: 'number'},
+//    valorPrevisaoDeducao: { type: 'number'},
+//    valorPrevisaoAnulacao: { type: 'number'},
+//    valorRealizado: { type: 'number'},
+//    valorDeduzido: { type: 'number'},
+//    valorARealizar: { type: 'number'},
+//    valorARealizarDeduzido: { type: 'number'},
+//    valorPrevisaoAcrescimo: { type: 'number'},
+//    valorPrevisaoInicialAcrescimo: { type: 'number'},
+//    valorPrevisaoDeducaoAcrescimo: { type: 'number'},
+//    valorPrevisaoAnulacaoAcrescimo: { type: 'number'},
+//    valorRealizadoAcrescimo: { type: 'number'},
+//    valorRealizadoDeduzidoAcrescimo: { type: 'number'},
+//    valorARealizarAcrescimo: { type: 'number'},
+//    valorARealizarDeduzidoAcrescimo: { type: 'number'},
+//    naturezaReceita: { type: 'string'}
+//});
 
 function martelada(limit, offset) {
     var deferred = Q.defer();
     request({
-    url: 'http://api.ima.sp.gov.br/v1/transparencia/receitas',
-    method: 'GET',
-    headers: {
-        Accept : "application/json",
-        client_id : "4zkL7Edheb5R"
-    },
-    qs: {
-        offset: offset,
-        limit: limit
-        //,fields : 'codigoBairro,nomeBairro'
-    }
+		url: 'http://api.ima.sp.gov.br/v1/transparencia/receitas',
+		method: 'GET',
+		headers: {
+			Accept : "application/json",
+			client_id : "3tkmPQq7piof"
+		},
+		qs: {
+			offset: offset,
+			limit: limit
+		}
     }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body);
-        deferred.resolve(info);
-        
-    } else {
-        console.log(error);
-    }
+		if (!error && response.statusCode == 200) {
+			var info = JSON.parse(body);
+			deferred.resolve(info);
+		} else {
+			console.log(response);
+		}
     });   
    return deferred.promise; 
 }
 
 
 var limit = 100;
-var offset = 0;
+var offset = 17887;
 
 var promises = [];
 for(var i = 0; i < 100; i++ ) {
@@ -99,10 +104,11 @@ Q.all(promises).then(function(results){
     results.map(function(itens){
         if(itens instanceof Array) {
             itens.map(function(documents){
-                console.log(documents.id);
-                var receitas = new Receitas(documents);
-                receitas.save();
-                original_documents.push(documents);
+				if(documents.id != null) {
+					console.log(documents.id);
+					connection.query("INSERT INTO receitas (id, anoMesEmissao, valorPrevisao, valorRealizado, valorPrevisaoAcrescimo, valorRealizadoAcrescimo, naturezaReceita) VALUES (?, ?, ?, ?, ?, ?, ?);", [documents.id, documents.anoMesEmissao, documents.valorPrevisao, documents.valorRealizado, documents.valorPrevisaoAcrescimo, documents.valorRealizadoAcrescimo, documents.naturezaReceita]);
+					original_documents.push(documents);
+				}
             });
         }
     });

@@ -67,7 +67,7 @@ connection.connect();
 function martelada(limit, offset) {
     var deferred = Q.defer();
     request({
-		url: 'http://api.ima.sp.gov.br/v1/transparencia/despesas',
+		url: 'http://api.ima.sp.gov.br/v1/transparencia/empenhos',
 		method: 'GET',
 		headers: {
 			Accept : "application/json",
@@ -106,7 +106,7 @@ Q.all(promises).then(function(results){
             itens.map(function(documents){
 				if(documents.id != null) {
 					console.log(documents.id);
-					connection.query("INSERT INTO despesas (id, anoMes, notaEmpenho, valorEmpenho) VALUES (?, ?, ?, ?);", [documents.id, documents.anoMes, documents.notaEmpenho, documents.valorEmpenho]);
+					connection.query("INSERT INTO empenhos (id, codigoFuncao, notaEmpenho) VALUES (?, ?, ?);", [documents.id, documents.codigoFuncao, documents.notaEmpenho]);
 					original_documents.push(documents);
 				}
             });
