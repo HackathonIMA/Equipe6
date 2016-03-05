@@ -9,25 +9,23 @@ CREATE TABLE funcoes (
 CREATE TABLE empenhos (
 	id CHAR(12) NOT NULL,
 	codigoFuncao INT,
-	notaEmpenho CHAR(11),
+	notaEmpenho VARCHAR(50),
 	PRIMARY KEY(id),
-	INDEX(notaEmpenho),
-	CONSTRAINT FK_Funcao FOREIGN KEY(codigoFuncao) REFERENCES funcoes(codigoFuncao)
+	INDEX(notaEmpenho)
 );
 
 CREATE TABLE despesas (
 	id CHAR(12) NOT NULL,
 	anoMes CHAR(6),
-	notaEmpenho CHAR(11),
+	notaEmpenho VARCHAR(50),
 	valorEmpenho DECIMAL(15,2),
-	PRIMARY KEY(id),
-	CONSTRAINT FK_Empenho FOREIGN KEY(notaEmpenho) REFERENCES empenhos(notaEmpenho)
+	PRIMARY KEY(id)
 );
 
 CREATE TABLE naturezas (
 	id CHAR(12) NOT NULL,
 	descricao VARCHAR(500),
-	naturezaReceita BIGINT,
+	naturezaReceita VARCHAR(20),
 	PRIMARY KEY(id),
 	INDEX(naturezaReceita)
 );
@@ -39,6 +37,5 @@ CREATE TABLE receitas (
 	valorRealizado DECIMAL(15,2),
 	valorPrevisaoAcrescimo DECIMAL(15,2),
 	valorRealizadoAcrescimo DECIMAL(15,2),
-	naturezaReceita BIGINT,
-	CONSTRAINT FK_Natureza FOREIGN KEY(naturezaReceita) REFERENCES naturezas(naturezaReceita)
+	naturezaReceita VARCHAR(20)
 );
