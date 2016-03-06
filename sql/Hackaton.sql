@@ -35,6 +35,14 @@ CREATE TABLE programas (
 	INDEX(programa)
 );
 
+CREATE TABLE empenhos (
+	id CHAR(12) NOT NULL,
+	descricao VARCHAR(100),
+	notaEmpenho VARCHAR(50),
+	PRIMARY KEY(id),
+	INDEX(programa)
+);
+
 CREATE TABLE despesas (
 	id CHAR(12) NOT NULL,
 	anoMes CHAR(6),
