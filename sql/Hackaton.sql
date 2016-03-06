@@ -40,7 +40,7 @@ CREATE TABLE empenhos (
 	codigoFuncao INT,
 	notaEmpenho VARCHAR(50),
 	PRIMARY KEY(id),
-	INDEX(programa)
+	INDEX(notaEmpenho)
 );
 
 CREATE TABLE despesas (

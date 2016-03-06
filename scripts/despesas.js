@@ -89,7 +89,7 @@ function martelada(limit, offset) {
 }
 
 
-var limit = 100;
+var limit = 10;
 var offset = 0;
 
 var promises = [];
