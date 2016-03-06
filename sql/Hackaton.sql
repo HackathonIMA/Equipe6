@@ -1,17 +1,38 @@
+CREATE TABLE projetos_atividades (
+	id CHAR(12) NOT NULL,
+	descricao VARCHAR(250),
+	funcao INT,
+	subFuncao INT,
+	programa INT,
+	projetoAtividade VARCHAR(25),
+	PRIMARY KEY(id),
+	INDEX(funcao),
+	INDEX(subFuncao),
+	INDEX(programa)
+);
+
 CREATE TABLE funcoes (
 	id CHAR(12) NOT NULL,
 	descricao VARCHAR(50),
-	codigoFuncao INT,
+	funcao INT,
 	PRIMARY KEY(id),
-	INDEX(codigoFuncao)
+	INDEX(funcao)
 );
 
-CREATE TABLE empenhos (
+CREATE TABLE subfuncoes (
 	id CHAR(12) NOT NULL,
-	codigoFuncao INT,
-	notaEmpenho VARCHAR(50),
+	descricao VARCHAR(100),
+	subfuncao INT,
 	PRIMARY KEY(id),
-	INDEX(notaEmpenho)
+	INDEX(subfuncao)
+);
+
+CREATE TABLE programas (
+	id CHAR(12) NOT NULL,
+	descricao VARCHAR(100),
+	programa INT,
+	PRIMARY KEY(id),
+	INDEX(programa)
 );
 
 CREATE TABLE despesas (
@@ -19,7 +40,9 @@ CREATE TABLE despesas (
 	anoMes CHAR(6),
 	notaEmpenho VARCHAR(50),
 	valorEmpenho DECIMAL(15,2),
-	PRIMARY KEY(id)
+	projetoAtividade VARCHAR(25),
+	PRIMARY KEY(id),
+	INDEX(projetoAtividade)
 );
 
 CREATE TABLE naturezas (
@@ -31,11 +54,13 @@ CREATE TABLE naturezas (
 );
 
 CREATE TABLE receitas (
-	id CHAR(12) NOT NULL PRIMARY KEY,
+	id CHAR(12) NOT NULL,
 	anoMesEmissao CHAR(6),
 	valorPrevisao DECIMAL(15,2),
 	valorRealizado DECIMAL(15,2),
 	valorPrevisaoAcrescimo DECIMAL(15,2),
 	valorRealizadoAcrescimo DECIMAL(15,2),
-	naturezaReceita VARCHAR(20)
+	naturezaReceita VARCHAR(20),
+	PRIMARY KEY(id),
+	INDEX(naturezaReceita)
 );
