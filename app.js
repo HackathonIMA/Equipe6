@@ -28,7 +28,7 @@ var router = express.Router();
 
 router.route('/receitas')
 	.get(function (req, res) {
-    var queryString = 'SELECT NATUREZAS.descricao, (RECEITAS.valorPrevisao + RECEITAS.valorPrevisaoAcrescimo) as VALOR_PREVISTO, (RECEITAS.valorRealizado + RECEITAS.valorRealizadoAcrescimo) as VALOR_RECEBIDO, ((RECEITAS.valorPrevisao + RECEITAS.valorPrevisaoAcrescimo) - (RECEITAS.valorRealizado + RECEITAS.valorRealizadoAcrescimo)) as VALOR_A_RECEBER FROM NATUREZAS LEFT JOIN RECEITAS ON NATUREZAS.naturezaReceita = RECEITAS.naturezaReceita WHERE substring(RECEITAS.anoMesEmissao,1,4) > 2014';
+    var queryString = 'SELECT naturezas.descricao, (receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) as VALOR_PREVISTO, (receitas.valorRealizado + receitas.valorRealizadoAcrescimo) as VALOR_RECEBIDO, ((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER FROM naturezas LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita WHERE substring(receitas.anoMesEmissao,1,4) > 2014';
     connection.query(queryString, function(err, rows, fields) {
         if (err) throw err;
         res.status(200).json(rows);
