@@ -184,8 +184,7 @@
    });
    
    function getReceitas(option, year){
-      //$.getJSON("http://meuamigoprefeito.ulcas.com/receitas?ano="+ year + "&option=" + option + "&graph=arrays", function(result){
-      $.getJSON("http://localhost:3001/receitas?ano="+ year + "&option=" + option + "&graph=arrays", function(result){
+      $.getJSON("http://meuamigoprefeito.ulcas.com/receitas?ano="+ year + "&option=" + option + "&graph=arrays", function(result){
          console.log(result);
          
          if(option == 'despesa_funcao' || option == 'despesa_subfuncao' || option == 'despesa_programa') {
