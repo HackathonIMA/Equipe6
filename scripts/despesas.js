@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
-  password : 'bolacha0153',
+  password : 'root',
   database : 'hackaton'
 });
 
@@ -23,7 +23,8 @@ function martelada(limit, offset) {
 		},
 		qs: {
 			offset: offset,
-			limit: limit
+			limit: limit,
+			anoMes: "201404"
 		}
     }, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
@@ -37,8 +38,8 @@ function martelada(limit, offset) {
 }
 
 
-var limit = 100;
-var offset = 10000;
+var limit = 30;
+var offset = 9000;
 
 var promises = [];
 for(var i = 0; i < 100; i++ ) {
@@ -54,7 +55,7 @@ Q.all(promises).then(function(results){
             itens.map(function(documents){
 				if(documents.id != null) {
 					console.log(documents.id);
-					connection.query("INSERT INTO despesas (id, anoMes, notaEmpenho, valorEmpenho, projetoAtividade) VALUES (?, ?, ?, ?, ?);", [documents.id, documents.anoMes, documents.notaEmpenho, documents.valorEmpenho, documents.projetoAtividade]);
+					connection.query("INSERT INTO despesas (id, anoMes, notaEmpenho, valorEmpenho) VALUES (?, ?, ?, ?);", [documents.id, documents.anoMes, documents.notaEmpenho, documents.valorEmpenho]);
 					original_documents.push(documents);
 				}
             });

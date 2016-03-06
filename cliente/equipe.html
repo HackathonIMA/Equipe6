@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt">
+<!-- Inicio da Head -->
+<head>
+   <meta charset="utf-8" />
+   <title>Meu Amigo Prefeito</title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="Mosaddek" name="author" />
+   <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
+   <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+   <link href="css/style.css" rel="stylesheet" />
+   <link href="css/style-responsive.css" rel="stylesheet" />
+   <link href="css/style-default.css" rel="stylesheet" id="style_color" />
+   <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+</head>
+<!-- Fim da Head -->
+<!-- Começo do Body -->
+<body class="fixed-top">
+   <!-- Comdeço do Header -->
+   <div id="header" class="navbar navbar-inverse navbar-fixed-top">
+       <!-- Começo da barra de navegação superior -->
+       <div class="navbar-inner">
+           <div class="container-fluid">
+               <!--Inicio do toggle da barra lateral-->
+               <div class="sidebar-toggle-box hidden-phone">
+                   <div class="icon-reorder tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+               </div>
+               <!--Fim do ítoggle da barra lateral-->
+               <!-- Começo do logo -->
+               <a class="brand" href="index.html">
+                   <img src="img/logo.png" alt="Amigo do Prefeito" />
+               </a>
+               <!-- Fim do logo-->
+               <!-- Inicio do toggle de menu responsivo -->
+               <a class="btn btn-navbar collapsed" id="main_menu_trigger" data-toggle="collapse" data-target=".nav-collapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="arrow"></span>
+               </a>
+               <!-- Fim do toggle de menu responsivo -->
+               <!-- Inicio da notificacao -->
+               <div id="top_menu" class="nav notify-row">
+               </div>
+               <!-- Fim da notificacao -->
+               <div class="top-nav ">
+               </div>
+           </div>
+       </div>
+       <!-- Fim da barra de navegação superior -->
+   </div>
+   <!-- Fim da Head-->
+   <!-- Inicio do container -->
+   <div id="container" class="row-fluid">
+      <!-- Inicio da barra lateral-->
+      <div class="sidebar-scroll">
+        <div id="sidebar" class="nav-collapse collapse">
+         <!-- Inicio do menu da barra lateral -->
+          <ul class="sidebar-menu">
+              <li class="sub-menu active">
+                  <a class="" href="index.html">
+                      <i class="icon-home"></i>
+                      <span>Início</span>
+                  </a>
+              </li>
+              <li class="sub-menu">
+                  <a href="javascript:;" class="">
+                      <i class="icon-bar-chart"></i>
+                      <span>Relatórios</span>
+                      <span class="arrow"></span>
+                  </a>
+                  <ul class="sub">
+                      <li><a class="" href="#" id="aReceber">Receitas Recebidas</a></li>
+                      <li><a class="" href="#" id="previsto">Receitas Previsas</a></li>
+                      <li><a class="" href="#" id="recebido">Receitas a Receber</a></li>
+                  </ul>
+              </li>
+          </ul>
+         <!-- Fim do menu da barra de nevegacao lateral -->
+      </div>
+      </div>
+      <!-- Fim da barra de nevegacao lateral -->
+      <!-- Inicio pagina -->  
+      <div id="main-content">
+             <div class="row-fluid">
+                 <div class="span12">
+                     <!-- Inicio do descricao da equipe-->
+                         <div class="widget-body">
+                             <div class="row-fluid">
+                                 <div class="span6">
+                                     <div class="row-fluid about-us">
+                                         <div class="span4">
+                                             <img src="img/about-us/diego.jpg" alt="">
+                                         </div>
+                                         <div class="span8">
+                                             <div class="info terques">
+                                                 <h1>Diego Goes Bauleo</h1>
+                                                 <p>Desenvolvedor</p>
+                                                 <div class="social-links">
+                                                     <a href="https://www.facebook.com/dgbauleo">
+                                                         <i class="icon-facebook"></i>
+                                                     </a>
+                                                     <a href="https://www.linkedin.com/in/dgbauleo">
+                                                         <i class="icon-linkedin"></i>
+                                                     </a>
+
+                                                 </div>
+                                             </div>
+
+                                         </div>
+                                         <div class="space10"></div>
+                                     </div>
+                                 </div>
+                                 <div class="span6">
+                                     <div class="row-fluid about-us">
+                                         <div class="span4">
+                                             <img src="img/about-us/fabricio.jpg" alt="">
+                                         </div>
+                                         <div class="span8">
+                                             <div class="info yellow">
+                                                 <h1>Fabrício Matheus Gonçalves</h1>
+                                                 <p>Designer de UX</p>
+                                                 <div class="social-links">
+                                                     <a href="#">
+                                                         <i class="icon-facebook"></i>
+                                                     </a>
+                                                     <a href="https://www.linkedin.com/in/fabricio-gonçalves-7679b33">
+                                                         <i class="icon-linkedin"></i>
+                                                     </a>
+
+                                                 </div>
+                                             </div>
+
+                                         </div>
+                                         <div class="space10"></div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="space15"></div>
+                             <div class="row-fluid">
+                                 <div class="span6">
+                                     <div class="row-fluid about-us">
+                                         <div class="span4">
+                                             <img src="img/about-us/gui.jpg" alt="">
+                                         </div>
+                                         <div class="span8">
+                                             <div class="info green">
+                                                 <h1>Guilherme Giovanni Battoni</h1>
+                                                 <p>Desenvolvedor</p>
+                                                 <div class="social-links">
+                                                     <a href="https://www.facebook.com/guilhermegiovanni.battoni">
+                                                         <i class="icon-facebook"></i>
+                                                     </a>
+                                                     <a href="https://br.linkedin.com/in/guilhermebattoni">
+                                                         <i class="icon-linkedin"></i>
+                                                     </a>
+
+                                                 </div>
+                                             </div>
+
+                                         </div>
+                                         <div class="space10"></div>
+                                     </div>
+                                 </div>
+                                 <div class="span6">
+                                     <div class="row-fluid about-us">
+                                         <div class="span4">
+                                             <img src="img/about-us/lucas.jpg" alt="">
+                                         </div>
+                                         <div class="span8">
+                                             <div class="info orange">
+                                                 <h1>Lucas Costa Oliveira</h1>
+                                                 <p>Desenvolvedor</p>
+                                                 <div class="social-links">
+                                                     <a href="https://www.facebook.com/lcobolacha">
+                                                         <i class="icon-facebook"></i>
+                                                     </a>
+                                                     <a href="https://www.linkedin.com/in/lucascostaoliveira">
+                                                         <i class="icon-linkedin"></i>
+                                                     </a>
+
+                                                 </div>
+                                             </div>
+
+                                         </div>
+                                         <div class="space10"></div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- END BLANK PAGE PORTLET-->
+                 </div>
+             </div>
+            <!-- END PAGE CONTENT-->
+      </div>
+      <!-- Fim da pagina -->  
+   </div>
+   <!-- Fim do container-->
+
+   <!-- Inicio do rodape -->
+   <div id="footer">
+       2016 &copy; Corujao TEAM
+   </div>
+   <!-- Fim FOOTER -->
+
+   <!-- Inicio do carregamento do javascripts -->
+   <script src="js/jquery-1.8.3.min.js"></script>
+   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+   <script type="text/javascript" src="assets/jquery-slimscroll/jquery-ui-1.9.2.custom.min.js"></script>
+   <script type="text/javascript" src="assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+   <script src="assets/chart-master/Chart.js"></script>
+   <script src="js/all-chartjs.js"></script>
+   <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js" type="text/javascript"></script>
+   <script src="js/jquery.sparkline.js" type="text/javascript"></script>
+   <script src="assets/chart-master/Chart.js"></script>
+   <script src="js/jquery.scrollTo.min.js"></script>
+   <script src="js/common-scripts.js"></script>
+   <script src="js/easy-pie-chart.js"></script>
+   <script src="js/sparkline-chart.js"></script>
+   <script type="text/javascript">
+      $("#previsto").click(function(){
+        $("#option").val("PREVISTO");
+        getReceitas($("#option").val(), $("#year").val());
+      });
+      $("#recebido").click(function(){
+        $("#option").val("RECEBIDO");
+        getReceitas($("#option").val(), $("#year").val());
+      });
+        $("#year").change(function(){
+          getReceitas($("#option").val(), $("#year").val());
+      });
+     function getReceitas(option, year){
+      $.getJSON("http://meuamigoprefeito.ulcas.com/receitas?year="+ year + "&option=" + option + "&graph=arrays", function(result){
+              var barChartData = {
+                  labels : result.labels,
+                  datasets : [
+                      {
+                          fillColor : "rgba(220,220,220,0.5)",
+                          strokeColor : "rgba(220,220,220,1)",
+                          data : result.areceber
+                      },
+                      {
+                          fillColor : "rgba(151,187,205,0.5)",
+                          strokeColor : "rgba(151,187,205,1)",
+                          data : result.recebido
+                      }
+                  ]
+              };
+                new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+          });
+      };
+   </script>
+
+
+   <!-- Fim do carregamento do javascript -->   
+</body>
+<!-- Fim do body -->
+</html>
