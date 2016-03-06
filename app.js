@@ -8,7 +8,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
-  password : 'bolacha0153',
+  password : 'root',
   database : 'hackaton'
 });
 connection.connect();
@@ -39,9 +39,27 @@ router.route('/receitas')
     var queryString;
 
     if(query.option == 'previsto') {
-      queryString = 'SELECT naturezas.naturezaReceita, naturezas.descricao AS DESCRICAO, (receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) as VALOR_PREVISTO, (receitas.valorRealizado + receitas.valorRealizadoAcrescimo) as VALOR_RECEBIDO, ((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER FROM naturezas LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita WHERE substring(receitas.anoMesEmissao,1,4) = 2015 GROUP BY naturezas.naturezaReceita ORDER BY VALOR_RECEBIDO DESC;';
+      queryString = "SELECT	naturezas.naturezaReceita, "+
+								"naturezas.descricao AS DESCRICAO, "+
+								"(receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) as VALOR_PREVISTO, "+
+								"(receitas.valorRealizado + receitas.valorRealizadoAcrescimo) as VALOR_RECEBIDO, "+
+								"((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER "+
+					"FROM naturezas "+
+					"LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita "+
+					"WHERE substring(receitas.anoMesEmissao, 1, 4) = 2015 "+
+					"GROUP BY naturezas.naturezaReceita "+
+					"ORDER BY VALOR_RECEBIDO DESC;";
     } else if(query.option == 'recebido') {
-      queryString = 'SELECT naturezas.naturezaReceita, naturezas.descricao AS DESCRICAO, (receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) as VALOR_PREVISTO, (receitas.valorRealizado + receitas.valorRealizadoAcrescimo) as VALOR_RECEBIDO, ((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER FROM naturezas LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita WHERE substring(receitas.anoMesEmissao,1,4) = 2015 GROUP BY naturezas.naturezaReceita ORDER BY VALOR_RECEBIDO DESC;';
+      queryString = "SELECT naturezas.naturezaReceita, "+
+							"naturezas.descricao AS DESCRICAO, "+
+							"(receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) as VALOR_PREVISTO, "+
+							"(receitas.valorRealizado + receitas.valorRealizadoAcrescimo) as VALOR_RECEBIDO, "+
+							"((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER "+
+					"FROM naturezas "+
+					"LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita "+
+					"WHERE substring(receitas.anoMesEmissao,1,4) = 2015 "+
+					"GROUP BY naturezas.naturezaReceita "+
+					"ORDER BY VALOR_RECEBIDO DESC;";
     }
 
     connection.query(queryString, function(err, rows, fields) {
