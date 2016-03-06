@@ -8,7 +8,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
-  //password : 'root',
+  password : 'bolacha0153',
   database : 'hackaton'
 });
 connection.connect();
@@ -39,8 +39,8 @@ app.use(router);
 
 // Start Server
 var server = require('http').createServer(app);
-server.listen(process.env.PORT || 3000, process.env.IP, function() {
-	console.log('Express server listening on %d, in %s mode', process.env.PORT || 3000, app.get(
+server.listen(3001, process.env.IP, function() {
+	console.log('Express server listening on %d, in %s mode', process.env.PORT || 3001, app.get(
 		'env'));
 });
 exports.app = app;
