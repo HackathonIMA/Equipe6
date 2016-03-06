@@ -1,33 +1,233 @@
 <!DOCTYPE html>
-  <html lang="en">
-    <!-- Inicio da Head -->
-    <head>
-       <meta charset="utf-8" />
-       <title>Amigo do Prefeito</title>
-       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-       <meta content="" name="description" />
-       <meta content="" name="author" />
-       <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-       <link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
-       <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-       <link href="css/style.css" rel="stylesheet" />
-       <link href="css/style-responsive.css" rel="stylesheet" />
-       <link href="css/style-default.css" rel="stylesheet" id="style_color" />
-    </head>
-    <!-- Fim do Head-->
-    <!-- Inicio do Body -->
-    <body class="bc-inicio">
-        <div class="inicio-wrap">
-             <div class="metro-inicio yellow ">
-             <h1>Amigo do Prefeito</h1>
-              <h2>Auditoria social com base na transparência acessível de dados da gestão pública!</h2>
-              <a class="icon-btn-inicio" href="index.html">
-                <i class="icon-thumbs-up"></i>
-              </a>
+<html lang="pt">
+<!-- Inicio da Head -->
+<head>
+   <meta charset="utf-8" />
+   <title>Amigo Prefeito</title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="Mosaddek" name="author" />
+   <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
+   <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+   <link href="css/style.css" rel="stylesheet" />
+   <link href="css/style-responsive.css" rel="stylesheet" />
+   <link href="css/style-default.css" rel="stylesheet" id="style_color" />
+   <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+</head>
+<!-- Fim da Head -->
+<!-- Começo do Body -->
+<body class="fixed-top">
+   <!-- Comdeço do Header -->
+   <div id="header" class="navbar navbar-inverse navbar-fixed-top">
+       <!-- Começo da barra de navegação superior -->
+       <div class="navbar-inner">
+           <div class="container-fluid">
+               <!--Inicio do toggle da barra lateral-->
+               <div class="sidebar-toggle-box hidden-phone">
+                   <div class="icon-reorder tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+               </div>
+               <!--Fim do ítoggle da barra lateral-->
+               <!-- Começo do logo -->
+               <a class="brand" href="index.html">
+                  
+               </a>
+               <!-- Fim do logo-->
+               <!-- Inicio do toggle de menu responsivo -->
+               <a class="btn btn-navbar collapsed" id="main_menu_trigger" data-toggle="collapse" data-target=".nav-collapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="arrow"></span>
+               </a>
+               <!-- Fim do toggle de menu responsivo -->
+               <!-- Inicio da notificacao -->
+               <div id="top_menu" class="nav notify-row">
+               </div>
+               <!-- Fim da notificacao -->
+               <div class="top-nav ">
+               </div>
+           </div>
+       </div>
+       <!-- Fim da barra de navegação superior -->
+   </div>
+   <!-- Fim da Head-->
+   <!-- Inicio do container -->
+   <div id="container" class="row-fluid">
+      <!-- Inicio da barra lateral-->
+      <div class="sidebar-scroll">
+        <div id="sidebar" class="nav-collapse collapse">
+         <!-- Inicio do menu da barra lateral -->
+          <ul class="sidebar-menu">
+              <li class="sub-menu active">
+                  <a href="javascript:;" class="">
+                      <i class="icon-bar-chart"></i>
+                      <span>Relatórios</span>
+                      <span class="arrow"></span>
+                  </a>
+                  <ul class="sub">
+                     <li class="active"><a class="" href="#previsto" id="previsto">Receitas Previstas</a></li>
+                     <li><a class="" href="#recebido" id="recebido">Receitas Recebidas</a></li>
+                     <li><a class="" href="#despesa_funcao" id="despesa_funcao">Despesas por Função</a></li>
+                     <li><a class="" href="#despesa_subfuncao" id="despesa_subfuncao">Despesas por Sub Função</a></li>
+                     <li><a class="" href="#despesa_programa" id="despesa_programa">Despesas por Programa</a></li>
+                  </ul>
+              </li>
+          </ul>
+         <!-- Fim do menu da barra de nevegacao lateral -->
+      </div>
+      </div>
+      <!-- Fim da barra de nevegacao lateral -->
+      <!-- Inicio pagina -->  
+      <div id="main-content">
+         <!-- Inicio do container da pagina-->
+         <div class="container-fluid">
+            <!-- Inicio do header da pagina-->   
+            <div class="row-fluid">
+               <div class="center-block">
+                  <h3 class="titulo text-center">Receitas Previstas</h3>
+                </div>
+              </div>
+                <!-- Fim do titulo da pagina e  breadcrumb-->
+             
+           <!-- Fim do header da pagina-->
+ 
+        <!-- Inicio do portfolio de graficos-->
+            <div class="widget blue content-area">
+                <div class="widget-title">
+                    <h4 >Resultado da Análise</h4>
+                    <input type="hidden" id="option" />
+                     <select id="year" class="ano pull-right" title="Filtro por Ano" tabindex="1">
+                          <option value="2015">2015</option>
+                          <option value="2014">2014</option>
+                          <option value="2013">2013</option>
+                      </select>
+                <span class="tools">
+                </span>
+                </div>
+                <div class="widget-body">
+                    <div class="text-center">
+                        <canvas id="bar" height="500" width="800"></canvas>
+                    </div>
+                </div>
             </div>
-        </div>
+          <!-- Fim do portifolio de graficos-->       
+         </div>
+         <!-- Fim do conteudo da pagina-->
+      </div>
+      <!-- Fim da pagina -->  
+   </div>
+   <!-- Fim do container-->
 
-    </body>
-    <!-- Fim do Body -->
-  </html>
+   <!-- Inicio do rodape -->
+   <div id="footer">
+       2016 &copy; Corujao TEAM
+   </div>
+   <!-- Fim FOOTER -->
 
+   <!-- Inicio do carregamento do javascripts -->
+   <script src="js/jquery-1.8.3.min.js"></script>
+   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+   <script type="text/javascript" src="assets/jquery-slimscroll/jquery-ui-1.9.2.custom.min.js"></script>
+   <script type="text/javascript" src="assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+   <script src="assets/chart-master/Chart.js"></script>
+   <script src="js/all-chartjs.js"></script>
+   <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js" type="text/javascript"></script>
+   <script src="js/jquery.sparkline.js" type="text/javascript"></script>
+   <script src="assets/chart-master/Chart.js"></script>
+   <script src="js/jquery.scrollTo.min.js"></script>
+   <script src="js/common-scripts.js"></script>
+   <script src="js/easy-pie-chart.js"></script>
+   <script src="js/sparkline-chart.js"></script>
+   <script type="text/javascript">
+   $("#previsto").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
+      $("#option").val("previsto");
+      $(".titulo").text("Receitas Previstas");
+      getReceitas($("#option").val(), $("#year").val());
+   }).click();
+   
+   $("#recebido").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
+      $("#option").val("recebido");
+      $(".titulo").text("Receitas Recebidas");
+      getReceitas($("#option").val(), $("#year").val());
+   });
+	
+   $("#despesa_funcao").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
+      $("#option").val("despesa_funcao");
+      $(".titulo").text("Despesas por Função");
+      getReceitas($("#option").val(), $("#year").val());
+   });
+   
+   $("#despesa_subfuncao").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
+      $("#option").val("despesa_subfuncao");
+      $(".titulo").text("Despesas por Sub Função");
+      getReceitas($("#option").val(), $("#year").val());
+   });
+   
+   $("#despesa_programa").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
+      $("#option").val("despesa_programa");
+      $(".titulo").text("Despesas por Programa");
+      getReceitas($("#option").val(), $("#year").val());
+   });
+   
+   $("#year").change(function(){
+      getReceitas($("#option").val(), $("#year").val());
+   });
+   
+   function getReceitas(option, year){
+      $.getJSON("http://meuamigoprefeito.ulcas.com/receitas?ano="+ year + "&option=" + option + "&graph=arrays", function(result){
+         console.log(result);
+         
+         if(option == 'despesa_funcao' || option == 'despesa_subfuncao' || option == 'despesa_programa') {
+            var barChartData = {
+               labels : result.labels,
+               datasets : [
+                  {
+                     fillColor : "rgba(220,220,220,0.5)",
+                     strokeColor : "rgba(220,220,220,1)",
+                     data : result.despesa
+                  }
+               ]
+            };
+         }
+         else {
+            var barChartData = {
+            labels : result.labels,
+            datasets : [
+               {
+                  fillColor : "rgba(220,220,220,0.5)",
+                  strokeColor : "rgba(220,220,220,1)",
+                  data : result.previsto
+               },
+               {
+                  fillColor : "rgba(151,187,205,0.5)",
+                  strokeColor : "rgba(151,187,205,1)",
+                  data : result.recebido
+               }]
+            };
+         }
+      
+      var BarChart = new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+      
+      });
+   };
+   </script>
+
+
+   <!-- Fim do carregamento do javascript -->   
+</body>
+<!-- Fim do body -->
+</html>

@@ -8,7 +8,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
-  password : 'root',
+  password : 'bolacha0153',
   database : 'hackaton'
 });
 connection.connect();
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 app.use(bodyParser.json());
-
+app.use('/',express.static('cliente'));
 // Routes
 var router = express.Router();
 
