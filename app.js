@@ -46,9 +46,10 @@ router.route('/receitas')
 								"((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER "+
 					"FROM naturezas "+
 					"LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita "+
-					"WHERE substring(receitas.anoMesEmissao, 1, 4) = 2015 "+
+					"WHERE substring(receitas.anoMesEmissao, 1, 4) = " + query.ano + " "
 					"GROUP BY naturezas.naturezaReceita "+
-					"ORDER BY VALOR_RECEBIDO DESC;";
+					"ORDER BY VALOR_RECEBIDO DESC "+
+					"LIMIT 0,10;";
     } else if(query.option == 'recebido') {
       queryString = "SELECT naturezas.naturezaReceita, "+
 							"naturezas.descricao AS DESCRICAO, "+
@@ -57,9 +58,10 @@ router.route('/receitas')
 							"((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER "+
 					"FROM naturezas "+
 					"LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita "+
-					"WHERE substring(receitas.anoMesEmissao,1,4) = 2015 "+
+					"WHERE substring(receitas.anoMesEmissao,1,4) = " + query.ano + " "
 					"GROUP BY naturezas.naturezaReceita "+
-					"ORDER BY VALOR_RECEBIDO DESC;";
+					"ORDER BY VALOR_RECEBIDO DESC "+
+					"LIMIT 0,10;"+
     }
 
     connection.query(queryString, function(err, rows, fields) {
