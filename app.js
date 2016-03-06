@@ -61,7 +61,7 @@ router.route('/receitas')
 					"WHERE substring(receitas.anoMesEmissao,1,4) = " + query.ano + " "
 					"GROUP BY naturezas.naturezaReceita "+
 					"ORDER BY VALOR_RECEBIDO DESC "+
-					"LIMIT 0,10;"+
+					"LIMIT 0,10;";
     }
 
     connection.query(queryString, function(err, rows, fields) {
