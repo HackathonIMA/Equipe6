@@ -37,8 +37,7 @@ router.route('/receitas')
     } else if(query.option == 'ARECEBER') {
       queryString = 'SELECT naturezas.descricao, (receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) as VALOR_PREVISTO, (receitas.valorRealizado + receitas.valorRealizadoAcrescimo) as VALOR_RECEBIDO, ((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER FROM naturezas LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita WHERE substring(receitas.anoMesEmissao,1,4) > 2014 ORDER BY VALOR_A_RECEBER DESC LIMIT 10';
     }
-
-    var queryString = 'SELECT naturezas.descricao, (receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) as VALOR_PREVISTO, (receitas.valorRealizado + receitas.valorRealizadoAcrescimo) as VALOR_RECEBIDO, ((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER FROM naturezas LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita WHERE substring(receitas.anoMesEmissao,1,4) > 2014';
+    
     connection.query(queryString, function(err, rows, fields) {
         if (err) throw err;
         res.status(200).json(rows);
