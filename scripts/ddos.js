@@ -1,25 +1,14 @@
 var request = require('request');
 var Q = require('q');
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host     : '127.0.0.1',
-  user     : 'root',
-  password : 'bolacha0153',
-  database : 'hackaton'
-});
-
-connection.connect();
-
-
 function martelada(limit, offset) {
     var deferred = Q.defer();
     request({
-		url: 'http://api.ima.sp.gov.br/v1/transparencia/despesas',
+		url: 'http://api.ima.sp.gov.br/v1/atendimento',
 		method: 'GET',
 		headers: {
 			Accept : "application/json",
-			client_id : "4zkL7Edheb5R"
+			client_id : "3tkmPQq7piof"
 		},
 		qs: {
 			offset: offset,
@@ -27,6 +16,7 @@ function martelada(limit, offset) {
 		}
     }, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
+      console.log(response.statusCode);
 			var info = JSON.parse(body);
 			deferred.resolve(info);
 		} else {
@@ -38,10 +28,10 @@ function martelada(limit, offset) {
 
 
 var limit = 100;
-var offset = 10000;
+var offset = 0;
 
 var promises = [];
-for(var i = 0; i < 100; i++ ) {
+for(var i = 0; i < 200; i++ ) {
     promises.push(martelada(limit,offset));
 	offset = offset + limit;
 }
@@ -54,7 +44,6 @@ Q.all(promises).then(function(results){
             itens.map(function(documents){
 				if(documents.id != null) {
 					console.log(documents.id);
-					connection.query("INSERT INTO despesas (id, anoMes, notaEmpenho, valorEmpenho, projetoAtividade) VALUES (?, ?, ?, ?, ?);", [documents.id, documents.anoMes, documents.notaEmpenho, documents.valorEmpenho, documents.projetoAtividade]);
 					original_documents.push(documents);
 				}
             });
