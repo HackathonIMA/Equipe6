@@ -32,6 +32,7 @@
                <!--Fim do ítoggle da barra lateral-->
                <!-- Começo do logo -->
                <a class="brand" href="index.html">
+                  
                </a>
                <!-- Fim do logo-->
                <!-- Inicio do toggle de menu responsivo -->
@@ -61,30 +62,18 @@
          <!-- Inicio do menu da barra lateral -->
           <ul class="sidebar-menu">
               <li class="sub-menu active">
-                  <a class="" href="index.html">
-                      <i class="icon-home"></i>
-                      <span>Início</span>
-                  </a>
-              </li>
-              <li class="sub-menu">
                   <a href="javascript:;" class="">
                       <i class="icon-bar-chart"></i>
                       <span>Relatórios</span>
                       <span class="arrow"></span>
                   </a>
                   <ul class="sub">
-                      <li><a class="" href="#" id="previsto">Receitas Previstas</a></li>
-                      <li><a class="" href="#" id="recebido">Receitas Recebidas</a></li>
-					  <li><a class="" href="#" id="despesa_funcao">Despesas por Função</a></li>
-					  <li><a class="" href="#" id="despesa_subfuncao">Despesas por Sub Função</a></li>
-					  <li><a class="" href="#" id="despesa_programa">Despesas por Programa</a></li>
+                     <li class="active"><a class="" href="#previsto" id="previsto">Receitas Previstas</a></li>
+                     <li><a class="" href="#recebido" id="recebido">Receitas Recebidas</a></li>
+                     <li><a class="" href="#despesa_funcao" id="despesa_funcao">Despesas por Função</a></li>
+                     <li><a class="" href="#despesa_subfuncao" id="despesa_subfuncao">Despesas por Sub Função</a></li>
+                     <li><a class="" href="#despesa_programa" id="despesa_programa">Despesas por Programa</a></li>
                   </ul>
-              </li>
-              <li class="sub-menu active">
-                  <a class="" href="equipe.html">
-                      <i class="icon-coffee"></i>
-                      <span>Equipe</span>
-                  </a>
               </li>
           </ul>
          <!-- Fim do menu da barra de nevegacao lateral -->
@@ -98,7 +87,7 @@
             <!-- Inicio do header da pagina-->   
             <div class="row-fluid">
                <div class="center-block">
-                  <!-- Inicio do titulo da pagina e breadcrumb--> 
+                  <h3 class="titulo text-center">Receitas Previstas</h3>
                 </div>
               </div>
                 <!-- Fim do titulo da pagina e  breadcrumb-->
@@ -106,11 +95,11 @@
            <!-- Fim do header da pagina-->
  
         <!-- Inicio do portfolio de graficos-->
-            <div class="widget blue">
+            <div class="widget blue content-area">
                 <div class="widget-title">
                     <h4 >Resultado da Análise</h4>
                     <input type="hidden" id="option" />
-                     <select id="year" class="ano pull-right " tabindex="1">
+                     <select id="year" class="ano pull-right" title="Filtro por Ano" tabindex="1">
                           <option value="2015">2015</option>
                           <option value="2014">2014</option>
                           <option value="2013">2013</option>
@@ -120,7 +109,7 @@
                 </div>
                 <div class="widget-body">
                     <div class="text-center">
-                        <canvas id="bar" height="600" width="1000"></canvas>
+                        <canvas id="bar" height="500" width="800"></canvas>
                     </div>
                 </div>
             </div>
@@ -155,27 +144,42 @@
    <script src="js/sparkline-chart.js"></script>
    <script type="text/javascript">
    $("#previsto").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
       $("#option").val("previsto");
+      $(".titulo").text("Receitas Previstas");
       getReceitas($("#option").val(), $("#year").val());
    }).click();
    
    $("#recebido").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
       $("#option").val("recebido");
+      $(".titulo").text("Receitas Recebidas");
       getReceitas($("#option").val(), $("#year").val());
    });
 	
    $("#despesa_funcao").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
       $("#option").val("despesa_funcao");
+      $(".titulo").text("Despesas por Função");
       getReceitas($("#option").val(), $("#year").val());
    });
    
    $("#despesa_subfuncao").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
       $("#option").val("despesa_subfuncao");
+      $(".titulo").text("Despesas por Sub Função");
       getReceitas($("#option").val(), $("#year").val());
    });
    
    $("#despesa_programa").click(function(){
+      $("ul.sub li").removeClass("active");
+      $(this).parent().addClass("active");
       $("#option").val("despesa_programa");
+      $(".titulo").text("Despesas por Programa");
       getReceitas($("#option").val(), $("#year").val());
    });
    
@@ -216,7 +220,8 @@
             };
          }
       
-      new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+      var BarChart = new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+      
       });
    };
    </script>
