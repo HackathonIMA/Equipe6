@@ -37,7 +37,7 @@ CREATE TABLE programas (
 
 CREATE TABLE empenhos (
 	id CHAR(12) NOT NULL,
-	descricao VARCHAR(100),
+	codigoFuncao INT,
 	notaEmpenho VARCHAR(50),
 	PRIMARY KEY(id),
 	INDEX(programa)
