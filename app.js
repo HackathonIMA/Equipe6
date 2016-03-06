@@ -46,7 +46,7 @@ router.route('/receitas')
 								"((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER "+
 					"FROM naturezas "+
 					"LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita "+
-					"WHERE substring(receitas.anoMesEmissao, 1, 4) = " + query.ano + " "
+					"WHERE substring(receitas.anoMesEmissao, 1, 4) = ? "+
 					"GROUP BY naturezas.naturezaReceita "+
 					"ORDER BY VALOR_RECEBIDO DESC "+
 					"LIMIT 0,10;";
@@ -58,13 +58,13 @@ router.route('/receitas')
 							"((receitas.valorPrevisao + receitas.valorPrevisaoAcrescimo) - (receitas.valorRealizado + receitas.valorRealizadoAcrescimo)) as VALOR_A_RECEBER "+
 					"FROM naturezas "+
 					"LEFT JOIN receitas ON naturezas.naturezaReceita = receitas.naturezaReceita "+
-					"WHERE substring(receitas.anoMesEmissao,1,4) = " + query.ano + " "
+					"WHERE substring(receitas.anoMesEmissao,1,4) = ? "+
 					"GROUP BY naturezas.naturezaReceita "+
 					"ORDER BY VALOR_RECEBIDO DESC "+
 					"LIMIT 0,10;";
     }
 
-    connection.query(queryString, function(err, rows, fields) {
+    connection.query(queryString, [query.ano], function(err, rows, fields) {
         if (err) throw err;
 
         if(query.graph == "arrays") {
