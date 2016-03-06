@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
-  //password : 'root',
+  password : 'root',
   database : 'hackaton'
 });
 
@@ -41,7 +41,7 @@ connection.connect();
 //    id: {
 //        type: 'String',
 //        index: { unique: true }
-//    },
+//    }, 
 //    anoMesEmissao: { type: 'number'},
 //    codigoOrigemRecurso: 0,
 //    valorPrevisao: { type: 'number'},
@@ -84,16 +84,16 @@ function martelada(limit, offset) {
 		} else {
 			console.log(response);
 		}
-    });
-   return deferred.promise;
+    });   
+   return deferred.promise; 
 }
 
 
 var limit = 100;
-var offset = 100000;
+var offset = 0;
 
 var promises = [];
-for(var i = 0; i < 200; i++ ) {
+for(var i = 0; i < 100; i++ ) {
     promises.push(martelada(limit,offset));
     offset = offset + limit;
 }
@@ -112,11 +112,11 @@ Q.all(promises).then(function(results){
             });
         }
     });
-
+    
     return original_documents;
 }).then(function(orig) {
     console.log(orig.length);
-
+    
     console.log(offset);
     console.log(limit);
 });

@@ -67,7 +67,7 @@ connection.connect();
 function martelada(limit, offset) {
     var deferred = Q.defer();
     request({
-		url: 'http://api.ima.sp.gov.br/v1/transparencia/funcoes',
+		url: 'http://api.ima.sp.gov.br/v1/transparencia/subfuncoes',
 		method: 'GET',
 		headers: {
 			Accept : "application/json",
@@ -106,7 +106,7 @@ Q.all(promises).then(function(results){
             itens.map(function(documents){
 				if(documents.id != null) {
 					console.log(documents.id);
-					connection.query("INSERT INTO funcoes (id, descricao, funcao) VALUES (?, ?, ?);", [documents.id, documents.descricao, documents.funcao]);
+					connection.query("INSERT INTO subfuncoes (id, descricao, subfuncao) VALUES (?, ?, ?);", [documents.id, documents.descricao, documents.subFuncao]);
 					original_documents.push(documents);
 				}
             });
